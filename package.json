@@ -1,8 +1,11 @@
 {
   "name": "logger",
-  "version": "1.0.0",
+  "version": "0.9.0",
   "description": "",
   "main": "index.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "dependencies": {
     "@google-cloud/logging-bunyan": "^2.0.3",
     "bunyan": "^1.8.12",
@@ -11,7 +14,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node index.js",
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC"
