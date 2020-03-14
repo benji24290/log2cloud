@@ -6,6 +6,7 @@ const { LoggingBunyan } = require('@google-cloud/logging-bunyan');
 class Logger {
     constructor(serviceName) {
         this.serviceName = serviceName
+        this.validateSetup()
         this.loggingBunyan = new LoggingBunyan();
         this.logger = bunyan.createLogger({
             // The JSON payload of the log as it appears in Stackdriver Logging
@@ -44,18 +45,17 @@ class Logger {
         debug(`${this.serviceName}:trace`)(log);
     }
     validateSetup() {
-        //TODO check env path
-        //TODO check servicename
+        if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
+            throw new Error('No service account provided')
+        }
+        if (!this.serviceName) {
+            throw new Error('No service name provieded')
+        }
     }
 }
-
-
-
 
 function newLogger(service) {
     return new Logger(service)
 }
 
 module.exports = newLogger
-
-//module.exports = Logger
