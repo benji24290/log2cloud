@@ -1,4 +1,5 @@
 # log2cloud
+Local logging with 'debug' and logging to stackdriver with 'bunyan'
 
 ```javascript
 const logger = require('log2cloud')("my-service-name")
